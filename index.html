@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Govardhan Satya Gadi, AI Engineer & LLM Builder. Exploring Agentic AI, Deep Learning, and intelligent systems." />
+  <meta property="og:title" content="Govardhan Satya Gadi — AI Engineer" />
+  <meta property="og:description" content="Portfolio of Govardhan Satya Gadi, AI Engineer & LLM Builder. Exploring Agentic AI, Deep Learning, and intelligent systems." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://govardhansatya.com/" />
+  <!-- Replace with actual image URL once deployed -->
+  <meta property="og:image" content="photo.jpeg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>Govardhan Satya Gadi — AI Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background canvas -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">gsg.</a>
+      <nav class="nav-links">
+        <a href="#about">about</a>
+        <a href="#skills">skills</a>
+        <a href="#experience">experience</a>
+        <a href="#projects">projects</a>
+        <a href="#education">education</a>
+        <a href="#contact">contact</a>
+      </nav>
+      <div style="display: flex; align-items: center; gap: 1rem;">
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#about" class="mobile-link">about</a>
+      <a href="#skills" class="mobile-link">skills</a>
+      <a href="#experience" class="mobile-link">experience</a>
+      <a href="#projects" class="mobile-link">projects</a>
+      <a href="#education" class="mobile-link">education</a>
+      <a href="#contact" class="mobile-link">contact</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-bg-blob blob-1"></div>
+    <div class="hero-bg-blob blob-2"></div>
+    <div class="hero-content">
+
+      <!-- Text side -->
+      <div class="hero-text">
+        <span class="hero-eyebrow reveal">hey, i'm</span>
+        <h1 class="hero-name reveal">
+          Govardhan<br /><em>Satya Gadi</em>
+        </h1>
+        <p class="hero-title reveal">
+          AI Engineer &amp; LLM Builder
+        </p>
+        <p class="hero-desc reveal">
+          I build intelligent systems — from LLM-powered agents to recommendation engines. 
+          Currently studying AI &amp; Data Science at Amrita Vishwa Vidyapeetham and interning 
+          at Heapvue, Kochi.
+        </p>
+        <div class="hero-actions reveal">
+          <a href="#projects" class="btn btn-primary">see my work</a>
+          <a href="#contact" class="btn btn-ghost">get in touch</a>
+        </div>
+        <div class="hero-socials reveal">
+          <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </a>
+          <a href="https://linkedin.com/in/govardhangadi" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="mailto:govardhangadi@gmail.com" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Photo side -->
+      <div class="hero-photo-wrap reveal">
+        <div class="hero-photo-frame">
+          <img src="photo.jpeg" alt="Govardhan Satya Gadi" class="hero-photo" />
+          <div class="hero-photo-ring"></div>
+          <div class="hero-photo-blob"></div>
+        </div>
+        <div class="hero-photo-badge">AI &amp; ML</div>
+      </div>
+
+    </div>
+    <div class="hero-scroll-hint">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-text">
+          <span class="section-tag reveal">01 — about</span>
+          <h2 class="section-heading reveal">
+            Building things that<br /><em>actually think</em>.
+          </h2>
+          <p class="reveal">
+            I'm a second-year B.Tech student in AI &amp; Data Science, but the label fits loosely — I've been 
+            deep in LLMs, agents, and ML systems since before I enrolled. I care about making AI 
+            that solves real problems, not just demos that look good in a README.
+          </p>
+          <p class="reveal">
+            Outside of code, I co-lead SIG-AI at ACM's Amritapuri chapter, where I run workshops 
+            and hackathons to pull other students into the same rabbit hole I fell into. 
+            Based in Tuni, AP — building from wherever the Wi-Fi holds up.
+          </p>
+          <div class="about-chips reveal">
+            <span class="chip">Agentic AI</span>
+            <span class="chip">LLMs</span>
+            <span class="chip">Data Science</span>
+            <span class="chip">Open Source</span>
+          </div>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-stat">
+            <span class="stat-num">8.02</span>
+            <span class="stat-label">CGPA</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">3+</span>
+            <span class="stat-label">AI projects shipped</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">185</span>
+            <span class="stat-label">GitHub contributions</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num">∞</span>
+            <span class="stat-label">hours reading papers</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section section-alt" id="skills">
+    <div class="container">
+      <span class="section-tag reveal">02 — skills</span>
+      <h2 class="section-heading reveal">Tools of the trade</h2>
+      <div class="skills-grid">
+        <div class="skill-group reveal">
+          <h3 class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            Languages
+          </h3>
+          <div class="skill-tags">
+            <span class="stag">Python</span>
+            <span class="stag">Java</span>
+            <span class="stag">R</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3 class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+            AI &amp; ML
+          </h3>
+          <div class="skill-tags">
+            <span class="stag stag-pink">Machine Learning</span>
+            <span class="stag stag-pink">Deep Learning</span>
+            <span class="stag stag-pink">Agentic AI</span>
+            <span class="stag stag-pink">Data Science</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3 class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Frameworks &amp; Tools
+          </h3>
+          <div class="skill-tags">
+            <span class="stag stag-rose">LangChain</span>
+            <span class="stag stag-rose">FAISS</span>
+            <span class="stag stag-rose">Streamlit</span>
+            <span class="stag stag-rose">PyTorch</span>
+            <span class="stag stag-rose">scikit-learn</span>
+            <span class="stag stag-rose">Playwright</span>
+            <span class="stag stag-rose">MCP</span>
+          </div>
+        </div>
+        <div class="skill-group reveal">
+          <h3 class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            Soft Skills
+          </h3>
+          <div class="skill-tags">
+            <span class="stag">Critical Thinking</span>
+            <span class="stag">Leadership</span>
+            <span class="stag">Initiative</span>
+            <span class="stag">Creativity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience">
+    <div class="container">
+      <span class="section-tag reveal">03 — experience</span>
+      <h2 class="section-heading reveal">Where I've worked</h2>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-period">Aug 2025 — Present</span>
+              <span class="timeline-badge">current</span>
+            </div>
+            <h3 class="timeline-role">LLM Research Intern</h3>
+            <p class="timeline-org">Heapvue &bull; Kochi, India</p>
+            <ul class="timeline-points">
+              <li>Integrated MCP (Model Context Protocol) architecture to design scalable and modular chatbot services.</li>
+              <li>Built LLM-powered conversational systems tailored for diverse business use cases.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="stag stag-sm">LLMs</span>
+              <span class="stag stag-sm">MCP</span>
+              <span class="stag stag-sm">Chatbots</span>
+              <span class="stag stag-sm">Python</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card">
+            <div class="timeline-meta">
+              <span class="timeline-period">Jun 2025 — Present</span>
+              <span class="timeline-badge">current</span>
+            </div>
+            <h3 class="timeline-role">Co-Lead, SIG-AI</h3>
+            <p class="timeline-org">ACM Student Chapter, Amritapuri</p>
+            <ul class="timeline-points">
+              <li>Led AI workshops and hackathons to promote hands-on learning and innovation.</li>
+              <li>Managed AI initiatives, coordinated teams, and fostered collaborative environments.</li>
+              <li>Worked on real-world ML problems using PyTorch and scikit-learn.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="stag stag-sm">PyTorch</span>
+              <span class="stag stag-sm">scikit-learn</span>
+              <span class="stag stag-sm">Leadership</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section section-alt" id="projects">
+    <div class="container">
+      <span class="section-tag reveal">04 — projects</span>
+      <h2 class="section-heading reveal">Things I've built</h2>
+      <div class="projects-grid">
+
+        <article class="project-card reveal">
+          <div class="project-card-top">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            </div>
+            <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <h3 class="project-title">Music Recommendation System</h3>
+          <p class="project-desc">
+            Engineered a hybrid recommender combining SVD-based collaborative filtering with Annoy-based 
+            vector search for content filtering. Improved recommendation relevance by leveraging user 
+            listening history and high-dimensional song embeddings.
+          </p>
+          <div class="project-tags">
+            <span class="stag stag-pink stag-sm">Python</span>
+            <span class="stag stag-pink stag-sm">SVD</span>
+            <span class="stag stag-pink stag-sm">Annoy</span>
+            <span class="stag stag-pink stag-sm">scikit-learn</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card-top">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <h3 class="project-title">AI Browser Automation</h3>
+          <p class="project-desc">
+            Developed a robust automation system using Google Gemini with visual agent feedback loops. 
+            Reduced task failure rates on dynamic web pages by implementing intelligent XPath heuristics 
+            and automated fallback strategies.
+          </p>
+          <div class="project-tags">
+            <span class="stag stag-rose stag-sm">Gemini</span>
+            <span class="stag stag-rose stag-sm">Playwright</span>
+            <span class="stag stag-rose stag-sm">XPath</span>
+            <span class="stag stag-rose stag-sm">Python</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card-top">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+            </div>
+            <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <h3 class="project-title">Personalised Academic Story Teller</h3>
+          <p class="project-desc">
+            Built an adaptive educational tool using LangChain and FAISS for RAG via Gemini. 
+            Generated highly engaging narrative-driven content from dry academic modules, improving 
+            comprehension and retention for young learners.
+          </p>
+          <div class="project-tags">
+            <span class="stag stag-pink stag-sm">FAISS</span>
+            <span class="stag stag-pink stag-sm">LangChain</span>
+            <span class="stag stag-pink stag-sm">Gemini</span>
+            <span class="stag stag-pink stag-sm">RAG</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal">
+          <div class="project-card-top">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <a href="https://github.com/govardhansatya/autonomous-devops-assistant" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <h3 class="project-title">Autonomous DevOps Assistant</h3>
+          <p class="project-desc">
+            Designed an extensible skeleton for an autonomous DevOps assistant featuring a CLI entrypoint 
+            and FastAPI backend. Simplified cluster orchestration by integrating MCP server stubs for 
+            observability, Git operations, and Kubernetes management.
+          </p>
+          <div class="project-tags">
+            <span class="stag stag-rose stag-sm">MCP</span>
+            <span class="stag stag-rose stag-sm">FastAPI</span>
+            <span class="stag stag-rose stag-sm">JWT</span>
+            <span class="stag stag-rose stag-sm">Python</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section" id="education">
+    <div class="container">
+      <span class="section-tag reveal">05 — education</span>
+      <h2 class="section-heading reveal">Where I've studied</h2>
+      <div class="edu-list">
+
+        <div class="edu-item reveal">
+          <div class="edu-year">2024 — 2028</div>
+          <div class="edu-info">
+            <h3 class="edu-degree">B.Tech — Artificial Intelligence &amp; Data Science</h3>
+            <p class="edu-school">Amrita Vishwa Vidyapeetham, Amritapuri Campus</p>
+          </div>
+          <div class="edu-grade">
+            <span class="grade-num">8.02</span>
+            <span class="grade-label">CGPA</span>
+          </div>
+        </div>
+
+        <div class="edu-item reveal">
+          <div class="edu-year">2022 — 2024</div>
+          <div class="edu-info">
+            <h3 class="edu-degree">Higher Secondary Education (CBSE)</h3>
+            <p class="edu-school">Sasi E.M High School, Velivennu</p>
+          </div>
+          <div class="edu-grade">
+            <span class="grade-num">84%</span>
+            <span class="grade-label">Score</span>
+          </div>
+        </div>
+
+        <div class="edu-item reveal">
+          <div class="edu-year">2022</div>
+          <div class="edu-info">
+            <h3 class="edu-degree">Secondary Education (SSC)</h3>
+            <p class="edu-school">Sasi E.M High School, Velivennu</p>
+          </div>
+          <div class="edu-grade">
+            <span class="grade-num">95%</span>
+            <span class="grade-label">Score</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section section-contact" id="contact">
+    <div class="container">
+      <span class="section-tag reveal">06 — contact</span>
+      <h2 class="section-heading reveal">
+        Let's build something<br /><em>interesting together</em>.
+      </h2>
+      <p class="contact-sub reveal">
+        I'm currently open to research collabs, interesting projects, and conversations 
+        about AI that don't start with "have you tried ChatGPT?".
+      </p>
+      <div class="contact-links reveal">
+        <a href="mailto:govardhangadi@gmail.com" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div>
+            <span class="contact-card-label">email</span>
+            <span class="contact-card-value">govardhangadi@gmail.com</span>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/govardhangadi" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </div>
+          <div>
+            <span class="contact-card-label">linkedin</span>
+            <span class="contact-card-value">govardhangadi</span>
+          </div>
+        </a>
+        <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          </div>
+          <div>
+            <span class="contact-card-label">github</span>
+            <span class="contact-card-value">govardhansatya</span>
+          </div>
+        </a>
+        <a href="tel:+919542767767" class="contact-card">
+          <div class="contact-card-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 0.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <span class="contact-card-label">phone</span>
+            <span class="contact-card-value">+91 95427 67767</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">gsg.</span>
+      <span class="footer-copy">built by govardhan · <span id="currentYear">2025</span></span>
+      <div class="footer-actions">
+        <div class="footer-socials">
+          <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" aria-label="GitHub">gh</a>
+          <a href="https://linkedin.com/in/govardhangadi" target="_blank" rel="noopener" aria-label="LinkedIn">li</a>
+        </div>
+        <button class="back-to-top" aria-label="Back to Top">
+          ↑ top
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
