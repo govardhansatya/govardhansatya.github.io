@@ -240,159 +240,192 @@
 
 
 /* ================================================================
-   BACKGROUND CANVAS — drifting lines
-   Fills the viewport; most visible in the side margins on wide
-   screens where content doesn't reach.
+   BACKGROUND — site-wide animated WebGL gradient
+   Three soft, slowly-drifting colour blobs blended over the base
+   background colour, in the site's pink/rose palette. Reacts gently
+   to the cursor and re-reads the palette whenever the theme toggles.
    ================================================================ */
 (() => {
   const canvas = document.getElementById('bgCanvas');
-  // Disable animation if reduced motion is preferred
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  if (!canvas || prefersReducedMotion.matches) {
-    if (canvas) canvas.style.display = 'none';
+  if (!canvas) return;
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) {
+    canvas.style.display = 'none';
     return;
   }
-  
-  const ctx = canvas.getContext('2d');
 
+  const VERT_SRC = `
+    attribute vec2 aPosition;
+    void main() {
+      gl_Position = vec4(aPosition, 0.0, 1.0);
+    }
+  `;
+
+  const FRAG_SRC = `
+    precision mediump float;
+    uniform vec2 uResolution;
+    uniform float uTime;
+    uniform vec2 uMouse;
+    uniform vec3 uColor0;
+    uniform vec3 uColor1;
+    uniform vec3 uColor2;
+    uniform vec3 uColor3;
+
+    void main() {
+      vec2 uv = gl_FragCoord.xy / uResolution.xy;
+      vec2 p = uv * 2.0 - 1.0;
+      p.x *= uResolution.x / uResolution.y;
+
+      float t = uTime * 0.045;
+
+      vec2 c1 = vec2(sin(t * 1.3) * 0.7, cos(t * 1.7) * 0.5) + uMouse * 0.12;
+      vec2 c2 = vec2(cos(t * 0.9) * 0.8, sin(t * 1.1) * 0.6);
+      vec2 c3 = vec2(sin(t * 0.6 + 2.0) * 0.6, cos(t * 0.8 + 1.0) * 0.75);
+
+      float d1 = length(p - c1);
+      float d2 = length(p - c2);
+      float d3 = length(p - c3);
+
+      float g1 = smoothstep(1.15, 0.0, d1);
+      float g2 = smoothstep(1.05, 0.0, d2);
+      float g3 = smoothstep(0.95, 0.0, d3);
+
+      vec3 color = uColor0;
+      color = mix(color, uColor1, g1 * 0.75);
+      color = mix(color, uColor2, g2 * 0.55);
+      color = mix(color, uColor3, g3 * 0.4);
+
+      gl_FragColor = vec4(color, 1.0);
+    }
+  `;
+
+  function compileShader(type, src) {
+    const shader = gl.createShader(type);
+    gl.shaderSource(shader, src);
+    gl.compileShader(shader);
+    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+      gl.deleteShader(shader);
+      return null;
+    }
+    return shader;
+  }
+
+  const vertShader = compileShader(gl.VERTEX_SHADER, VERT_SRC);
+  const fragShader = compileShader(gl.FRAGMENT_SHADER, FRAG_SRC);
+  if (!vertShader || !fragShader) {
+    canvas.style.display = 'none';
+    return;
+  }
+
+  const program = gl.createProgram();
+  gl.attachShader(program, vertShader);
+  gl.attachShader(program, fragShader);
+  gl.linkProgram(program);
+  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
+    canvas.style.display = 'none';
+    return;
+  }
+  gl.useProgram(program);
+
+  // Fullscreen triangle (covers the viewport without a quad/index buffer)
+  const buffer = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+
+  const aPosition = gl.getAttribLocation(program, 'aPosition');
+  gl.enableVertexAttribArray(aPosition);
+  gl.vertexAttribPointer(aPosition, 2, gl.FLOAT, false, 0, 0);
+
+  const uResolution = gl.getUniformLocation(program, 'uResolution');
+  const uTime = gl.getUniformLocation(program, 'uTime');
+  const uMouse = gl.getUniformLocation(program, 'uMouse');
+  const uColor0 = gl.getUniformLocation(program, 'uColor0');
+  const uColor1 = gl.getUniformLocation(program, 'uColor1');
+  const uColor2 = gl.getUniformLocation(program, 'uColor2');
+  const uColor3 = gl.getUniformLocation(program, 'uColor3');
+
+  function hexToRgb(hex) {
+    const clean = hex.trim().replace('#', '');
+    const bigint = parseInt(clean.length === 3
+      ? clean.split('').map((c) => c + c).join('')
+      : clean, 16);
+    return [
+      ((bigint >> 16) & 255) / 255,
+      ((bigint >> 8) & 255) / 255,
+      (bigint & 255) / 255,
+    ];
+  }
+
+  function readPalette() {
+    const styles = getComputedStyle(document.documentElement);
+    gl.uniform3fv(uColor0, hexToRgb(styles.getPropertyValue('--bg') || '#fef8f5'));
+    gl.uniform3fv(uColor1, hexToRgb(styles.getPropertyValue('--pink-pale') || '#fce8e2'));
+    gl.uniform3fv(uColor2, hexToRgb(styles.getPropertyValue('--pink-light') || '#f4c5ba'));
+    gl.uniform3fv(uColor3, hexToRgb(styles.getPropertyValue('--pink-mid') || '#de8a7c'));
+  }
+  readPalette();
+
+  // Re-read the palette whenever the theme toggles
+  new MutationObserver(readPalette).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['data-theme'],
+  });
+
+  // Render at a slightly reduced resolution — a soft gradient doesn't
+  // need full pixel density, and it's cheaper to animate every frame.
+  const RENDER_SCALE = 0.6;
   let W = 0, H = 0;
 
   function resize() {
-    W = canvas.width  = window.innerWidth;
-    H = canvas.height = window.innerHeight;
+    W = Math.floor(window.innerWidth * RENDER_SCALE);
+    H = Math.floor(window.innerHeight * RENDER_SCALE);
+    canvas.width = W;
+    canvas.height = H;
+    gl.viewport(0, 0, W, H);
+    gl.uniform2f(uResolution, W, H);
   }
   resize();
   window.addEventListener('resize', resize, { passive: true });
 
-  // Colour palette — warm pinks / roses
-  const PALETTE = [
-    'hsla(350, 60%, 72%,',   // rose pink
-    'hsla(340, 50%, 68%,',   // mauve-pink
-    'hsla(10,  55%, 70%,',   // peach-rose
-    'hsla(330, 45%, 75%,',   // light mauve
-    'hsla(355, 65%, 78%,',   // blush
-  ];
-
-  class DriftLine {
-    constructor(spreadY) {
-      this._spreadY = spreadY;
-      this.reset(true);
-    }
-
-    reset(initial = false) {
-      this.x       = Math.random() * W;
-      this.y       = initial ? Math.random() * H : -(60 + Math.random() * 160);
-      this.len     = 55 + Math.random() * 180;
-      // Mostly pointing slightly right-and-down OR left-and-down
-      const dir    = Math.random() < 0.5 ? 1 : -1;
-      this.angle   = (Math.PI * 0.5) + dir * (0.3 + Math.random() * 0.55);
-      this.speed   = 0.25 + Math.random() * 0.55;
-      // Lines near edges are slightly more opaque for the "fill the sides" feel
-      const edgePull = Math.max(
-        1 - this.x / (W * 0.18),           // left edge
-        1 - (W - this.x) / (W * 0.18),     // right edge
-        0
-      );
-      this.alpha   = 0.025 + random() * 0.065 + edgePull * 0.04;
-      this.color   = PALETTE[Math.floor(Math.random() * PALETTE.length)];
-      this.width   = 0.4 + Math.random() * 0.9;
-    }
-
-    update() {
-      this.y += this.speed;
-      if (this.y > H + this.len + 20) this.reset(false);
-    }
-
-    draw() {
-      const dx = Math.cos(this.angle) * this.len;
-      const dy = Math.sin(this.angle) * this.len;
-      ctx.beginPath();
-      ctx.moveTo(this.x, this.y);
-      ctx.lineTo(this.x + dx, this.y + dy);
-      ctx.strokeStyle = `${this.color}${this.alpha.toFixed(3)})`;
-      ctx.lineWidth   = this.width;
-      ctx.stroke();
-    }
-  }
-
-  // Seeded-ish simple random so reset feels natural
-  function random() { return Math.random(); }
-
-  // On very wide screens add more lines so the sides feel alive
-  function lineCount() {
-    return W > 1400 ? 70 : W > 900 ? 50 : 30;
-  }
-
-  let lines = Array.from({ length: lineCount() }, () => new DriftLine(true));
-
-  // Rebalance line count on resize
-  let resizeTimer;
-  window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      const target = lineCount();
-      while (lines.length < target) lines.push(new DriftLine(true));
-      if (lines.length > target) lines.length = target;
-    }, 200);
+  let mouseX = 0, mouseY = 0;
+  window.addEventListener('mousemove', (e) => {
+    mouseX = (e.clientX / window.innerWidth) * 2 - 1;
+    mouseY = -((e.clientY / window.innerHeight) * 2 - 1);
   }, { passive: true });
 
-  // --- Slow cross-lines: long horizontal wisps that drift vertically ---
-  class WispLine {
-    constructor() { this.reset(true); }
-    reset(initial) {
-      this.y     = initial ? Math.random() * H : -5;
-      this.speed = 0.08 + Math.random() * 0.14;
-      this.alpha = 0.018 + Math.random() * 0.022;
-      this.color = PALETTE[Math.floor(Math.random() * PALETTE.length)];
-      this.width = 0.5 + Math.random() * 0.5;
-      // Width covers only the outer margins, not the centre content
-      this.xStart = 0;
-      this.xEnd   = W;
-    }
-    update() {
-      this.y += this.speed;
-      if (this.y > H + 10) this.reset(false);
-    }
-    draw() {
-      ctx.beginPath();
-      ctx.moveTo(this.xStart, this.y);
-      ctx.lineTo(this.xEnd, this.y);
-      ctx.strokeStyle = `${this.color}${this.alpha.toFixed(3)})`;
-      ctx.lineWidth   = this.width;
-      ctx.stroke();
-    }
-  }
-
-  const wisps = Array.from({ length: 12 }, () => new WispLine());
   let running = true;
+  const start = performance.now();
+
+  function render() {
+    const elapsed = (performance.now() - start) / 1000;
+    gl.uniform1f(uTime, elapsed);
+    gl.uniform2f(uMouse, mouseX, mouseY);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
 
   function tick() {
     if (!running) return;
-    
-    ctx.clearRect(0, 0, W, H);
-
-    ctx.lineCap = 'round';
-
-    wisps.forEach(w => { w.update(); w.draw(); });
-    lines.forEach(l => { l.update(); l.draw(); });
-
+    render();
     requestAnimationFrame(tick);
   }
 
-  tick();
+  if (prefersReducedMotion.matches) {
+    // Draw a single static frame instead of animating
+    render();
+  } else {
+    tick();
 
-  // Performance Optimization: Pause canvas when tab is hidden
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      running = false;
-    } else {
-      // Small check to avoid kicking off multiple loops
-      if (!running) {
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        running = false;
+      } else if (!running) {
         running = true;
         tick();
       }
-    }
-  });
+    });
+  }
 })();
 
 

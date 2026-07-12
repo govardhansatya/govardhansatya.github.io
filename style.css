@@ -145,14 +145,44 @@ p { color: var(--text-body); }
   margin: 0 auto;
   padding: 0 clamp(1.25rem, 5vw, 3rem);
   perspective: 1200px;
+  position: relative;
+}
+
+/* ---- Giant background section numerals (Archeridge-style) ------ */
+.section-number {
+  position: absolute;
+  top: -1.5rem;
+  right: clamp(0.5rem, 3vw, 2rem);
+  z-index: -1;
+  font-family: 'Anton', var(--font-sans);
+  font-size: clamp(6rem, 18vw, 13rem);
+  line-height: 1;
+  color: var(--pink-pale);
+  opacity: 0.55;
+  user-select: none;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .section-number {
+  opacity: 0.35;
+}
+
+@media (max-width: 700px) {
+  .section-number {
+    font-size: clamp(4rem, 22vw, 7rem);
+    top: -0.5rem;
+  }
 }
 
 .section {
   padding: clamp(5rem, 10vw, 8rem) 0;
+  /* Light scrim so body text stays legible over the animated background */
+  background-color: color-mix(in srgb, var(--bg) 35%, transparent);
 }
 
 .section-alt {
-  background-color: var(--bg-alt);
+  /* Translucent so the animated WebGL background stays visible site-wide */
+  background-color: color-mix(in srgb, var(--bg-alt) 62%, transparent);
 }
 
 /* ---- Reveal Animation ----------------------------------- */
@@ -225,18 +255,20 @@ p { color: var(--text-body); }
 /* ---- Section Labels ------------------------------------- */
 .section-tag {
   display: inline-block;
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-family: 'Anton', var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--pink-mid);
   margin-bottom: 1rem;
 }
 
 .section-heading {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
   font-weight: 500;
   margin-bottom: 2.5rem;
+  letter-spacing: -0.01em;
 }
 
 /* ================================================================
@@ -440,9 +472,9 @@ p { color: var(--text-body); }
 }
 
 .hero-name {
-  font-size: clamp(3rem, 9vw, 6.5rem);
+  font-size: clamp(3rem, 10vw, 7.5rem);
   font-weight: 700;
-  line-height: 1.0;
+  line-height: 0.98;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
   color: var(--text);
