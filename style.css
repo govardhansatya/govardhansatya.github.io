@@ -144,6 +144,7 @@ p { color: var(--text-body); }
   width: min(100%, 1080px);
   margin: 0 auto;
   padding: 0 clamp(1.25rem, 5vw, 3rem);
+  perspective: 1200px;
 }
 
 .section {
@@ -157,14 +158,38 @@ p { color: var(--text-body); }
 /* ---- Reveal Animation ----------------------------------- */
 .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(28px) rotateX(-8deg);
+  transform-origin: center bottom;
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.visible {
   opacity: 1;
   transform: none;
+}
+
+/* ---- 3D Tilt (mouse-tracked; JS sets inline transform, which
+   wins over any class-level transform rule including .reveal).
+   Own transition here overrides .reveal's 0.7s so the tilt feels
+   responsive instead of laggy on elements that are also .reveal. */
+.tilt-target {
+  will-change: transform;
+  /* Replaces .reveal's whole `transition` value on elements that are both
+     .reveal and .tilt-target, so re-declare the opacity fade alongside a
+     fast transform transition (otherwise the fade-in would be lost). */
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.15s ease-out;
+}
+
+.tilt-target.tilt-resting {
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---- Scroll parallax layers ------------------------------ */
+.parallax {
+  will-change: transform;
 }
 
 /* Reduced Motion Preference */
@@ -180,6 +205,14 @@ p { color: var(--text-body); }
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .tilt-target {
+    transform: none !important;
+  }
+
+  .hero-orb {
+    display: none;
   }
 }
 
@@ -547,6 +580,18 @@ p { color: var(--text-body); }
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
+}
+
+/* Three.js hero orb — sits behind the photo, same scale as the glow blob */
+.hero-orb {
+  position: absolute;
+  inset: -90px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 700px) {
+  .hero-orb { display: none; }
 }
 
 .hero-photo-frame {

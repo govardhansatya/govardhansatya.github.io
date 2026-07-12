@@ -395,3 +395,74 @@
   });
 })();
 
+
+/* ================================================================
+   3D TILT + SCROLL PARALLAX
+   Cursor-tracked tilt on cards/photo, and depth-of-field parallax
+   on hero blobs + section tags as the page scrolls.
+   ================================================================ */
+(() => {
+  'use strict';
+
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const isTouchDevice = window.matchMedia('(hover: none)').matches;
+
+  if (prefersReducedMotion.matches || isTouchDevice) return;
+
+  /* ---- Cursor-tracked 3D tilt ----------------------------- */
+  const tiltEls = document.querySelectorAll('.tilt-target');
+
+  tiltEls.forEach((el) => {
+    const maxTilt = el.id === 'tiltPhoto' ? 10 : 6;
+
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;   // 0..1
+      const py = (e.clientY - rect.top) / rect.height;   // 0..1
+      const rotY = (px - 0.5) * maxTilt * 2;
+      const rotX = (0.5 - py) * maxTilt * 2;
+
+      el.classList.remove('tilt-resting');
+      el.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+    });
+
+    el.addEventListener('mouseleave', () => {
+      el.classList.add('tilt-resting');
+      el.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+    });
+  });
+
+  /* ---- Scroll parallax ------------------------------------ */
+  const parallaxEls = document.querySelectorAll('.parallax');
+  const sectionTags = document.querySelectorAll('.section-tag');
+
+  let parallaxTicking = false;
+
+  const updateParallax = () => {
+    const scrollY = window.scrollY;
+
+    parallaxEls.forEach((el) => {
+      const speed = parseFloat(el.dataset.speed || '0.2');
+      el.style.transform = `translateY(${scrollY * speed}px)`;
+    });
+
+    sectionTags.forEach((tag) => {
+      const rect = tag.getBoundingClientRect();
+      // Small drift as the tag enters/leaves the viewport
+      const progress = 1 - Math.min(Math.max(rect.top / window.innerHeight, 0), 1);
+      tag.style.transform = `translateY(${(1 - progress) * 10}px)`;
+    });
+
+    parallaxTicking = false;
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!parallaxTicking) {
+      requestAnimationFrame(updateParallax);
+      parallaxTicking = true;
+    }
+  }, { passive: true });
+
+  updateParallax();
+})();
+

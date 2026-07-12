@@ -16,6 +16,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script type="importmap">
+    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+  </script>
 </head>
 <body>
 
@@ -31,6 +34,7 @@
         <a href="#skills">skills</a>
         <a href="#experience">experience</a>
         <a href="#projects">projects</a>
+        <a href="#research">research</a>
         <a href="#education">education</a>
         <a href="#contact">contact</a>
       </nav>
@@ -49,6 +53,7 @@
       <a href="#skills" class="mobile-link">skills</a>
       <a href="#experience" class="mobile-link">experience</a>
       <a href="#projects" class="mobile-link">projects</a>
+      <a href="#research" class="mobile-link">research</a>
       <a href="#education" class="mobile-link">education</a>
       <a href="#contact" class="mobile-link">contact</a>
     </div>
@@ -56,8 +61,8 @@
 
   <!-- HERO -->
   <section class="hero" id="home">
-    <div class="hero-bg-blob blob-1"></div>
-    <div class="hero-bg-blob blob-2"></div>
+    <div class="hero-bg-blob blob-1 parallax" data-speed="0.15"></div>
+    <div class="hero-bg-blob blob-2 parallax" data-speed="0.25"></div>
     <div class="hero-content">
 
       <!-- Text side -->
@@ -70,9 +75,10 @@
           AI Engineer &amp; LLM Builder
         </p>
         <p class="hero-desc reveal">
-          I build intelligent systems — from LLM-powered agents to recommendation engines. 
-          Currently studying AI &amp; Data Science at Amrita Vishwa Vidyapeetham and interning 
-          at Heapvue, Kochi.
+          I build intelligent systems — from multi-agent LLM platforms and knowledge-graph
+          retrieval to biosignal deep learning. Associate Software Developer II at Heapvue,
+          AI Research Intern at Lacones Labs–CCMB, and B.Tech student in AI &amp; Data Science
+          at Amrita Vishwa Vidyapeetham.
         </p>
         <div class="hero-actions reveal">
           <a href="#projects" class="btn btn-primary">see my work</a>
@@ -92,7 +98,8 @@
       </div>
 
       <!-- Photo side -->
-      <div class="hero-photo-wrap reveal">
+      <div class="hero-photo-wrap reveal tilt-target" id="tiltPhoto">
+        <canvas id="heroOrb" class="hero-orb" aria-hidden="true"></canvas>
         <div class="hero-photo-frame">
           <img src="photo.jpeg" alt="Govardhan Satya Gadi" class="hero-photo" />
           <div class="hero-photo-ring"></div>
@@ -118,29 +125,30 @@
             Building things that<br /><em>actually think</em>.
           </h2>
           <p class="reveal">
-            I'm a second-year B.Tech student in AI &amp; Data Science, but the label fits loosely — I've been 
-            deep in LLMs, agents, and ML systems since before I enrolled. I care about making AI 
-            that solves real problems, not just demos that look good in a README.
+            I'm a B.Tech student in AI &amp; Data Science, but the label fits loosely — I've been
+            deep in LLMs, agents, knowledge graphs, and signal processing since before I enrolled.
+            I care about making AI that solves real problems, not just demos that look good in a README.
           </p>
           <p class="reveal">
-            Outside of code, I co-lead SIG-AI at ACM's Amritapuri chapter, where I run workshops 
-            and hackathons to pull other students into the same rabbit hole I fell into. 
+            Outside of coursework, I lead SIG-AI at ACM's Amritapuri chapter, where I run workshops
+            and hackathons to pull other students into the same rabbit hole I fell into.
             Based in Tuni, AP — building from wherever the Wi-Fi holds up.
           </p>
           <div class="about-chips reveal">
             <span class="chip">Agentic AI</span>
             <span class="chip">LLMs</span>
-            <span class="chip">Data Science</span>
+            <span class="chip">Knowledge Graphs</span>
+            <span class="chip">Signal Processing</span>
             <span class="chip">Open Source</span>
           </div>
         </div>
         <div class="about-card reveal">
           <div class="about-stat">
-            <span class="stat-num">8.02</span>
+            <span class="stat-num">7.77</span>
             <span class="stat-label">CGPA</span>
           </div>
           <div class="about-stat">
-            <span class="stat-num">3+</span>
+            <span class="stat-num">6+</span>
             <span class="stat-label">AI projects shipped</span>
           </div>
           <div class="about-stat">
@@ -162,45 +170,118 @@
       <span class="section-tag reveal">02 — skills</span>
       <h2 class="section-heading reveal">Tools of the trade</h2>
       <div class="skills-grid">
-        <div class="skill-group reveal">
+        <div class="skill-group reveal tilt-target">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            Languages
+            Programming
           </h3>
           <div class="skill-tags">
             <span class="stag">Python</span>
+            <span class="stag">Go</span>
             <span class="stag">Java</span>
             <span class="stag">R</span>
+            <span class="stag">SQL</span>
           </div>
         </div>
-        <div class="skill-group reveal">
+        <div class="skill-group reveal tilt-target">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             AI &amp; ML
           </h3>
           <div class="skill-tags">
-            <span class="stag stag-pink">Machine Learning</span>
             <span class="stag stag-pink">Deep Learning</span>
-            <span class="stag stag-pink">Agentic AI</span>
-            <span class="stag stag-pink">Data Science</span>
+            <span class="stag stag-pink">CNNs</span>
+            <span class="stag stag-pink">BiLSTMs</span>
+            <span class="stag stag-pink">Transfer Learning</span>
+            <span class="stag stag-pink">Contrastive Learning</span>
+            <span class="stag stag-pink">Domain Generalization</span>
           </div>
         </div>
-        <div class="skill-group reveal">
+        <div class="skill-group reveal tilt-target">
           <h3 class="skill-group-title">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-            Frameworks &amp; Tools
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v10l7 4"/></svg>
+            Generative AI
           </h3>
           <div class="skill-tags">
-            <span class="stag stag-rose">LangChain</span>
-            <span class="stag stag-rose">FAISS</span>
-            <span class="stag stag-rose">Streamlit</span>
-            <span class="stag stag-rose">PyTorch</span>
-            <span class="stag stag-rose">scikit-learn</span>
-            <span class="stag stag-rose">Playwright</span>
-            <span class="stag stag-rose">MCP</span>
+            <span class="stag stag-pink">RAG</span>
+            <span class="stag stag-pink">MCP</span>
+            <span class="stag stag-pink">Agentic AI</span>
+            <span class="stag stag-pink">Multi-Agent Systems</span>
+            <span class="stag stag-pink">Prompt Engineering</span>
+            <span class="stag stag-pink">LLM Fine-Tuning</span>
           </div>
         </div>
-        <div class="skill-group reveal">
+        <div class="skill-group reveal tilt-target">
+          <h3 class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 8 4-16 2 8h4"/></svg>
+            Signal Processing
+          </h3>
+          <div class="skill-tags">
+            <span class="stag">DSP</span>
+            <span class="stag">FFT</span>
+            <span class="stag">STFT</span>
+            <span class="stag">CWT</span>
+            <span class="stag">MFCC</span>
+            <span class="stag">Sensor Fusion</span>
+          </div>
+        </div>
+        <div class="skill-group reveal tilt-target">
+          <h3 class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            Frameworks
+          </h3>
+          <div class="skill-tags">
+            <span class="stag stag-rose">PyTorch</span>
+            <span class="stag stag-rose">LangChain</span>
+            <span class="stag stag-rose">LangGraph</span>
+            <span class="stag stag-rose">Agno</span>
+            <span class="stag stag-rose">scikit-learn</span>
+            <span class="stag stag-rose">Streamlit</span>
+            <span class="stag stag-rose">Playwright</span>
+          </div>
+        </div>
+        <div class="skill-group reveal tilt-target">
+          <h3 class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+            Databases
+          </h3>
+          <div class="skill-tags">
+            <span class="stag stag-rose">Neo4j</span>
+            <span class="stag stag-rose">Qdrant</span>
+            <span class="stag stag-rose">MongoDB</span>
+            <span class="stag stag-rose">FAISS</span>
+            <span class="stag stag-rose">Annoy</span>
+          </div>
+        </div>
+        <div class="skill-group reveal tilt-target">
+          <h3 class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            MLOps
+          </h3>
+          <div class="skill-tags">
+            <span class="stag">Docker</span>
+            <span class="stag">GitHub Actions</span>
+            <span class="stag">Hugging Face</span>
+            <span class="stag">REST APIs</span>
+            <span class="stag">Vercel</span>
+            <span class="stag">Render</span>
+          </div>
+        </div>
+        <div class="skill-group reveal tilt-target">
+          <h3 class="skill-group-title">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            Frontend &amp; Backend
+          </h3>
+          <div class="skill-tags">
+            <span class="stag">React</span>
+            <span class="stag">Next.js</span>
+            <span class="stag">TypeScript</span>
+            <span class="stag">Tailwind CSS</span>
+            <span class="stag">Node.js</span>
+            <span class="stag">FastAPI</span>
+          </div>
+        </div>
+        <div class="skill-group reveal tilt-target">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             Soft Skills
@@ -224,44 +305,91 @@
       <div class="timeline">
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-card">
+          <div class="timeline-card tilt-target">
             <div class="timeline-meta">
-              <span class="timeline-period">Aug 2025 — Present</span>
+              <span class="timeline-period">May 2026 — Present</span>
               <span class="timeline-badge">current</span>
             </div>
-            <h3 class="timeline-role">LLM Research Intern</h3>
-            <p class="timeline-org">Heapvue &bull; Kochi, India</p>
+            <h3 class="timeline-role">AI Research Intern</h3>
+            <p class="timeline-org">Lacones Labs &bull; CCMB Collaboration, Hyderabad, India</p>
             <ul class="timeline-points">
-              <li>Integrated MCP (Model Context Protocol) architecture to design scalable and modular chatbot services.</li>
-              <li>Built LLM-powered conversational systems tailored for diverse business use cases.</li>
+              <li>Developing an underground biosignal intelligence platform using piezoelectric, acoustic, and vibration sensors.</li>
+              <li>Designed DSP pipelines using Butterworth filtering, STFT, CWT, MFCC extraction, and statistical feature engineering.</li>
+              <li>Built CNN, BiLSTM, and attention-based sensor fusion architectures for biological activity detection and anomaly classification.</li>
+              <li>Investigating edge-AI deployment strategies for real-time multimodal monitoring systems.</li>
             </ul>
             <div class="timeline-tags">
-              <span class="stag stag-sm">LLMs</span>
-              <span class="stag stag-sm">MCP</span>
-              <span class="stag stag-sm">Chatbots</span>
-              <span class="stag stag-sm">Python</span>
+              <span class="stag stag-sm">DSP</span>
+              <span class="stag stag-sm">CNN</span>
+              <span class="stag stag-sm">BiLSTM</span>
+              <span class="stag stag-sm">Sensor Fusion</span>
             </div>
           </div>
         </div>
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-card">
+          <div class="timeline-card tilt-target">
             <div class="timeline-meta">
-              <span class="timeline-period">Jun 2025 — Present</span>
+              <span class="timeline-period">Feb 2026 — Present</span>
               <span class="timeline-badge">current</span>
             </div>
-            <h3 class="timeline-role">Co-Lead, SIG-AI</h3>
-            <p class="timeline-org">ACM Student Chapter, Amritapuri</p>
+            <h3 class="timeline-role">Associate Software Developer II</h3>
+            <p class="timeline-org">Heapvue &bull; Kochi, India (Remote)</p>
             <ul class="timeline-points">
-              <li>Led AI workshops and hackathons to promote hands-on learning and innovation.</li>
-              <li>Managed AI initiatives, coordinated teams, and fostered collaborative environments.</li>
-              <li>Worked on real-world ML problems using PyTorch and scikit-learn.</li>
+              <li>Leading development of AI agent systems integrating MCP, RAG, multi-agent workflows, and enterprise automation.</li>
+              <li>Architecting scalable backend services and conversational intelligence platforms.</li>
+              <li>Contributing to product-level AI infrastructure and research-driven features.</li>
             </ul>
             <div class="timeline-tags">
+              <span class="stag stag-sm">MCP</span>
+              <span class="stag stag-sm">RAG</span>
+              <span class="stag stag-sm">Multi-Agent</span>
+              <span class="stag stag-sm">Go</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card tilt-target">
+            <div class="timeline-meta">
+              <span class="timeline-period">Aug 2025 — Feb 2026</span>
+            </div>
+            <h3 class="timeline-role">Associate Software Developer</h3>
+            <p class="timeline-org">Heapvue &bull; Kochi, India (Remote)</p>
+            <ul class="timeline-points">
+              <li>Designed MCP-enabled AI chatbot infrastructure for Chatpress.</li>
+              <li>Built Go microservices for retrieval, lead management, and conversational workflows.</li>
+              <li>Developed production-ready LLM systems deployed using Docker and REST APIs.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="stag stag-sm">MCP</span>
+              <span class="stag stag-sm">Go</span>
+              <span class="stag stag-sm">Docker</span>
+              <span class="stag stag-sm">REST APIs</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-card tilt-target">
+            <div class="timeline-meta">
+              <span class="timeline-period">May 2026 — Present</span>
+              <span class="timeline-badge">current</span>
+            </div>
+            <h3 class="timeline-role">Lead, SIG-AI</h3>
+            <p class="timeline-org">ACM Student Chapter, Amritapuri</p>
+            <ul class="timeline-points">
+              <li>Organized a 12-day technical bootcamp covering Deep Learning, MCP, MoE, Quantization, RLHF, and deployment.</li>
+              <li>Led AI workshops, hackathons, and collaborative learning initiatives across student teams.</li>
+              <li>Previously Co-Lead (Jun 2025 — May 2026) and Member (Oct 2024 — Present), running ML projects and LLM paper reading groups.</li>
+            </ul>
+            <div class="timeline-tags">
+              <span class="stag stag-sm">Leadership</span>
               <span class="stag stag-sm">PyTorch</span>
               <span class="stag stag-sm">scikit-learn</span>
-              <span class="stag stag-sm">Leadership</span>
             </div>
           </div>
         </div>
@@ -276,7 +404,98 @@
       <h2 class="section-heading reveal">Things I've built</h2>
       <div class="projects-grid">
 
-        <article class="project-card reveal">
+        <article class="project-card reveal tilt-target">
+          <div class="project-card-top">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 8 4-16 2 8h4"/></svg>
+            </div>
+            <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <h3 class="project-title">Underground Biosignal Intelligence System</h3>
+          <p class="project-desc">
+            Designed a multimodal biosignal architecture combining piezoelectric, MEMS acoustic, and
+            accelerometer sensors. Built Butterworth filtering, STFT/CWT/MFCC pipelines, and CNN, BiLSTM,
+            and attention-fusion models for biological activity classification, optimized for edge deployment.
+          </p>
+          <div class="project-tags">
+            <span class="stag stag-pink stag-sm">PyTorch</span>
+            <span class="stag stag-pink stag-sm">CNN</span>
+            <span class="stag stag-pink stag-sm">BiLSTM</span>
+            <span class="stag stag-pink stag-sm">DSP</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal tilt-target">
+          <div class="project-card-top">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 7.5 11 16M15.5 7.5 13 16M9 6h6"/></svg>
+            </div>
+            <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <h3 class="project-title">EvoKG-Agent — Knowledge Graph &amp; LLM Research</h3>
+          <p class="project-desc">
+            Researched hybrid Knowledge Graph + Vector Retrieval systems for hallucination reduction.
+            Built multi-agent retrieval workflows using Neo4j, Qdrant, Gemini 2.5 Flash, and Groq LLMs,
+            exploring temporal KG architectures and adaptive retrieval strategies.
+          </p>
+          <div class="project-tags">
+            <span class="stag stag-rose stag-sm">Neo4j</span>
+            <span class="stag stag-rose stag-sm">Qdrant</span>
+            <span class="stag stag-rose stag-sm">LangChain</span>
+            <span class="stag stag-rose stag-sm">Agentic RL</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal tilt-target">
+          <div class="project-card-top">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            </div>
+            <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <h3 class="project-title">Structure-Aware Domain Generalization for 3D Point Clouds</h3>
+          <p class="project-desc">
+            Built an EdgeConv → differentiable pooling → GAT → InfoNCE learning pipeline for
+            cross-domain 3D shape classification, evaluated across ModelNet40, ShapeNet, ScanNet,
+            and PointDA-10.
+          </p>
+          <div class="project-tags">
+            <span class="stag stag-pink stag-sm">PyTorch</span>
+            <span class="stag stag-pink stag-sm">EdgeConv</span>
+            <span class="stag stag-pink stag-sm">GAT</span>
+            <span class="stag stag-pink stag-sm">InfoNCE</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal tilt-target">
+          <div class="project-card-top">
+            <div class="project-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </a>
+          </div>
+          <h3 class="project-title">AI-Powered Browser Automation</h3>
+          <p class="project-desc">
+            Developed resilient browser automation using Gemini-driven visual agent loops and
+            self-correcting retries — multi-step planning, dynamic page interaction, form filling,
+            and data extraction across dynamic web applications.
+          </p>
+          <div class="project-tags">
+            <span class="stag stag-rose stag-sm">Gemini</span>
+            <span class="stag stag-rose stag-sm">Playwright</span>
+            <span class="stag stag-rose stag-sm">Python</span>
+          </div>
+        </article>
+
+        <article class="project-card reveal tilt-target">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -287,9 +506,9 @@
           </div>
           <h3 class="project-title">Music Recommendation System</h3>
           <p class="project-desc">
-            Engineered a hybrid recommender combining SVD-based collaborative filtering with Annoy-based 
-            vector search for content filtering. Improved recommendation relevance by leveraging user 
-            listening history and high-dimensional song embeddings.
+            Combined SVD collaborative filtering with ANN-based content retrieval, improving
+            recommendation quality via NDCG and Hit Rate evaluation and audio-embedding similarity
+            matching against listening behavior.
           </p>
           <div class="project-tags">
             <span class="stag stag-pink stag-sm">Python</span>
@@ -299,30 +518,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal">
-          <div class="project-card-top">
-            <div class="project-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-            </div>
-            <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
-          <h3 class="project-title">AI Browser Automation</h3>
-          <p class="project-desc">
-            Developed a robust automation system using Google Gemini with visual agent feedback loops. 
-            Reduced task failure rates on dynamic web pages by implementing intelligent XPath heuristics 
-            and automated fallback strategies.
-          </p>
-          <div class="project-tags">
-            <span class="stag stag-rose stag-sm">Gemini</span>
-            <span class="stag stag-rose stag-sm">Playwright</span>
-            <span class="stag stag-rose stag-sm">XPath</span>
-            <span class="stag stag-rose stag-sm">Python</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
+        <article class="project-card reveal tilt-target">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
@@ -333,38 +529,14 @@
           </div>
           <h3 class="project-title">Personalised Academic Story Teller</h3>
           <p class="project-desc">
-            Built an adaptive educational tool using LangChain and FAISS for RAG via Gemini. 
-            Generated highly engaging narrative-driven content from dry academic modules, improving 
-            comprehension and retention for young learners.
+            Built a RAG-powered educational storytelling assistant using FAISS, LangChain, and Gemini,
+            turning dry academic modules into narrative-driven content for young learners.
           </p>
           <div class="project-tags">
-            <span class="stag stag-pink stag-sm">FAISS</span>
-            <span class="stag stag-pink stag-sm">LangChain</span>
-            <span class="stag stag-pink stag-sm">Gemini</span>
-            <span class="stag stag-pink stag-sm">RAG</span>
-          </div>
-        </article>
-
-        <article class="project-card reveal">
-          <div class="project-card-top">
-            <div class="project-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-            </div>
-            <a href="https://github.com/govardhansatya/autonomous-devops-assistant" target="_blank" rel="noopener" class="project-link-icon" aria-label="GitHub">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-            </a>
-          </div>
-          <h3 class="project-title">Autonomous DevOps Assistant</h3>
-          <p class="project-desc">
-            Designed an extensible skeleton for an autonomous DevOps assistant featuring a CLI entrypoint 
-            and FastAPI backend. Simplified cluster orchestration by integrating MCP server stubs for 
-            observability, Git operations, and Kubernetes management.
-          </p>
-          <div class="project-tags">
-            <span class="stag stag-rose stag-sm">MCP</span>
-            <span class="stag stag-rose stag-sm">FastAPI</span>
-            <span class="stag stag-rose stag-sm">JWT</span>
-            <span class="stag stag-rose stag-sm">Python</span>
+            <span class="stag stag-rose stag-sm">FAISS</span>
+            <span class="stag stag-rose stag-sm">LangChain</span>
+            <span class="stag stag-rose stag-sm">Gemini</span>
+            <span class="stag stag-rose stag-sm">RAG</span>
           </div>
         </article>
 
@@ -372,10 +544,31 @@
     </div>
   </section>
 
+  <!-- RESEARCH INTERESTS -->
+  <section class="section" id="research">
+    <div class="container">
+      <span class="section-tag reveal">05 — research</span>
+      <h2 class="section-heading reveal">What I want to dig into</h2>
+      <div class="about-chips reveal" style="margin-top: 0;">
+        <span class="chip">Agentic AI</span>
+        <span class="chip">Knowledge Graph Reasoning</span>
+        <span class="chip">Retrieval-Augmented Generation</span>
+        <span class="chip">Temporal Knowledge Graphs</span>
+        <span class="chip">Multi-Agent Systems</span>
+        <span class="chip">Multimodal Learning</span>
+        <span class="chip">Signal Processing for AI</span>
+        <span class="chip">Sensor Fusion</span>
+        <span class="chip">Domain Generalization</span>
+        <span class="chip">Edge AI</span>
+        <span class="chip">Trustworthy AI</span>
+      </div>
+    </div>
+  </section>
+
   <!-- EDUCATION -->
   <section class="section" id="education">
     <div class="container">
-      <span class="section-tag reveal">05 — education</span>
+      <span class="section-tag reveal">06 — education</span>
       <h2 class="section-heading reveal">Where I've studied</h2>
       <div class="edu-list">
 
@@ -386,7 +579,7 @@
             <p class="edu-school">Amrita Vishwa Vidyapeetham, Amritapuri Campus</p>
           </div>
           <div class="edu-grade">
-            <span class="grade-num">8.02</span>
+            <span class="grade-num">7.77</span>
             <span class="grade-label">CGPA</span>
           </div>
         </div>
@@ -422,7 +615,7 @@
   <!-- CONTACT -->
   <section class="section section-contact" id="contact">
     <div class="container">
-      <span class="section-tag reveal">06 — contact</span>
+      <span class="section-tag reveal">07 — contact</span>
       <h2 class="section-heading reveal">
         Let's build something<br /><em>interesting together</em>.
       </h2>
@@ -431,7 +624,7 @@
         about AI that don't start with "have you tried ChatGPT?".
       </p>
       <div class="contact-links reveal">
-        <a href="mailto:govardhangadi@gmail.com" class="contact-card">
+        <a href="mailto:govardhangadi@gmail.com" class="contact-card tilt-target">
           <div class="contact-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </div>
@@ -440,7 +633,7 @@
             <span class="contact-card-value">govardhangadi@gmail.com</span>
           </div>
         </a>
-        <a href="https://www.linkedin.com/in/govardhansatya" target="_blank" rel="noopener" class="contact-card">
+        <a href="https://www.linkedin.com/in/govardhansatya" target="_blank" rel="noopener" class="contact-card tilt-target">
           <div class="contact-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
           </div>
@@ -449,7 +642,7 @@
             <span class="contact-card-value">govardhansatya</span>
           </div>
         </a>
-        <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="contact-card">
+        <a href="https://github.com/govardhansatya" target="_blank" rel="noopener" class="contact-card tilt-target">
           <div class="contact-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
           </div>
@@ -458,7 +651,7 @@
             <span class="contact-card-value">govardhansatya</span>
           </div>
         </a>
-        <a href="tel:+919542767767" class="contact-card">
+        <a href="tel:+919542767767" class="contact-card tilt-target">
           <div class="contact-card-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 11.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 0.69h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           </div>
@@ -491,5 +684,6 @@
   <div class="cursor-dot" id="cursorDot"></div>
 
   <script src="script.js"></script>
+  <script type="module" src="hero-orb.js"></script>
 </body>
 </html>
