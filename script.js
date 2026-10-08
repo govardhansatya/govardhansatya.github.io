@@ -23,6 +23,18 @@
 
   revealEls.forEach((el) => observer.observe(el));
 
+  // Content inside a closed <details> never intersects the viewport, so the
+  // scroll-reveal would leave it invisible after opening. Reveal it on open.
+  document.querySelectorAll('details').forEach((details) => {
+    details.addEventListener('toggle', () => {
+      if (!details.open) return;
+      details.querySelectorAll('.reveal').forEach((el) => {
+        el.classList.add('visible');
+        observer.unobserve(el);
+      });
+    });
+  });
+
 
   /* ---- Nav: add .scrolled class on scroll --------------- */
   const nav = document.getElementById('nav');

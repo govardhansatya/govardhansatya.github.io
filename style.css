@@ -684,7 +684,7 @@ p { color: var(--text-body); }
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-  color: var(--pink-dark);
+  color: var(--accent-text);
   box-shadow: var(--shadow-card);
   text-transform: uppercase;
   white-space: nowrap;
@@ -1458,6 +1458,7 @@ p { color: var(--text-body); }
 }
 
 .project-desc code {
+  color: var(--text-body);
   font-size: 0.85em;
   padding: 0.05rem 0.35rem;
   background: var(--pink-pale);
@@ -1624,3 +1625,18 @@ p { color: var(--text-body); }
   align-items: center;
   gap: 0.25rem;
 }
+
+
+/* ================================================================
+   TAP TARGET FLOORS (44 x 44)
+   ================================================================ */
+.nav-logo,
+.nav-links a { min-width: 44px; justify-content: center; text-align: center; }
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+}
+.back-to-top { min-height: 44px; }
