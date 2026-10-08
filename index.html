@@ -21,6 +21,8 @@
 </head>
 <body>
 
+  <a href="#main" class="skip-link">skip to content</a>
+
   <!-- Animated background canvas -->
   <canvas id="bgCanvas" aria-hidden="true"></canvas>
 
@@ -28,7 +30,7 @@
   <header class="nav" id="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">gsg.</a>
-      <nav class="nav-links">
+      <nav class="nav-links" aria-label="Primary">
         <a href="#about">about</a>
         <a href="#skills">skills</a>
         <a href="#experience">experience</a>
@@ -42,12 +44,12 @@
           <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <button class="hamburger" id="hamburger" aria-label="Open menu">
+        <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
           <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-    <div class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile">
       <a href="#about" class="mobile-link">about</a>
       <a href="#skills" class="mobile-link">skills</a>
       <a href="#experience" class="mobile-link">experience</a>
@@ -55,9 +57,10 @@
       <a href="#research" class="mobile-link">research</a>
       <a href="#education" class="mobile-link">education</a>
       <a href="#contact" class="mobile-link">contact</a>
-    </div>
+    </nav>
   </header>
 
+  <main id="main">
   <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-bg-blob blob-1 parallax" data-speed="0.15"></div>
@@ -730,7 +733,7 @@
         </article>
       </div>
       <p class="research-note reveal">Currently exploring:</p>
-      <div class="about-chips reveal" style="margin-top: 0;">
+      <div class="about-chips chips-flush reveal">
         <span class="chip">Agentic AI</span>
         <span class="chip">Knowledge Graph Reasoning</span>
         <span class="chip">Temporal Knowledge Graphs</span>
@@ -854,6 +857,8 @@
       </div>
     </div>
   </section>
+
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">

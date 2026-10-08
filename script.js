@@ -45,33 +45,30 @@
   const mobileMenu = document.getElementById('mobileMenu');
   let menuOpen = false;
 
-  hamburger.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    mobileMenu.classList.toggle('open', menuOpen);
+  const setMenu = (open) => {
+    menuOpen = open;
+    mobileMenu.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+    hamburger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
 
     // Animate hamburger bars into X
     const spans = hamburger.querySelectorAll('span');
-    if (menuOpen) {
-      spans[0].style.transform = 'translateY(6.5px) rotate(45deg)';
-      spans[1].style.opacity  = '0';
-      spans[2].style.transform = 'translateY(-6.5px) rotate(-45deg)';
-    } else {
-      spans[0].style.transform = '';
-      spans[1].style.opacity  = '';
-      spans[2].style.transform = '';
-    }
-  });
+    spans[0].style.transform = open ? 'translateY(6.5px) rotate(45deg)' : '';
+    spans[1].style.opacity  = open ? '0' : '';
+    spans[2].style.transform = open ? 'translateY(-6.5px) rotate(-45deg)' : '';
+  };
 
-  // Close mobile menu when a link is clicked
+  hamburger.addEventListener('click', () => setMenu(!menuOpen));
+
+  // Close mobile menu when a link is clicked, or on Escape
   mobileMenu.querySelectorAll('.mobile-link').forEach((link) => {
-    link.addEventListener('click', () => {
-      menuOpen = false;
-      mobileMenu.classList.remove('open');
-      const spans = hamburger.querySelectorAll('span');
-      spans[0].style.transform = '';
-      spans[1].style.opacity  = '';
-      spans[2].style.transform = '';
-    });
+    link.addEventListener('click', () => setMenu(false));
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuOpen) {
+      setMenu(false);
+      hamburger.focus();
+    }
   });
 
 
@@ -137,9 +134,10 @@
         if (entry.isIntersecting) {
           const id = entry.target.getAttribute('id');
           navLinks.forEach((link) => {
-            link.style.color = '';
             if (link.getAttribute('href') === `#${id}`) {
-              link.style.color = 'var(--text)';
+              link.setAttribute('aria-current', 'true');
+            } else {
+              link.removeAttribute('aria-current');
             }
           });
         }
