@@ -1526,3 +1526,94 @@ p { color: var(--text-body); }
   .projects-grid > .project-card-wide:first-child { grid-column: span 2; }
   .projects-grid > :last-child:nth-child(even) { grid-column: span 2; }
 }
+
+
+/* ================================================================
+   HIGHLIGHTS STRIP + COLLAPSIBLE "MORE" PROJECTS
+   ================================================================ */
+.highlights { padding: 0 0 2rem; }
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.highlight {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition), transform var(--transition);
+}
+
+.highlight:hover {
+  border-color: var(--pink-light);
+  transform: translateY(-2px);
+}
+
+.highlight-kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+}
+
+.highlight-text {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  color: var(--text);
+  line-height: 1.35;
+}
+
+@media (max-width: 700px) {
+  .highlights-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .highlight { padding: 0.85rem 1.1rem; }
+}
+
+.more-projects { margin-top: 2.5rem; }
+
+.more-projects > summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.6rem 1.25rem;
+  border: 1.5px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: border-color var(--transition), color var(--transition);
+}
+
+.more-projects > summary::-webkit-details-marker { display: none; }
+
+.more-projects > summary::before {
+  content: '+';
+  font-size: 1.1rem;
+  line-height: 1;
+  color: var(--accent-text);
+}
+
+.more-projects[open] > summary::before { content: '\2212'; }
+.more-projects > summary:hover { border-color: var(--pink-mid); color: var(--accent-text); }
+
+.more-count {
+  padding: 0.05rem 0.5rem;
+  background: var(--pink-pale);
+  color: var(--accent-text);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.more-projects[open] > .projects-grid { margin-top: 1.5rem; }
