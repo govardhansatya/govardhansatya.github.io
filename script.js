@@ -192,6 +192,11 @@
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   if (!canvas) return;
 
+  // Phones and reduced-motion users get a single static frame (saves battery);
+  // everyone else gets the animated gradient.
+  const staticMode = prefersReducedMotion.matches || window.matchMedia('(pointer: coarse)').matches;
+  let ready = false;
+
   const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
   if (!gl) {
     canvas.style.display = 'none';
@@ -310,7 +315,10 @@
   readPalette();
 
   // Re-read the palette whenever the theme toggles
-  new MutationObserver(readPalette).observe(document.documentElement, {
+  new MutationObserver(() => {
+    readPalette();
+    if (ready && staticMode) render();
+  }).observe(document.documentElement, {
     attributes: true,
     attributeFilter: ['data-theme'],
   });
@@ -327,6 +335,7 @@
     canvas.height = H;
     gl.viewport(0, 0, W, H);
     gl.uniform2f(uResolution, W, H);
+    if (ready && staticMode) render();
   }
   resize();
   window.addEventListener('resize', resize, { passive: true });
@@ -353,7 +362,8 @@
     requestAnimationFrame(tick);
   }
 
-  if (prefersReducedMotion.matches) {
+  ready = true;
+  if (staticMode) {
     // Draw a single static frame instead of animating
     render();
   } else {

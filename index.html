@@ -19,15 +19,45 @@
   <meta property="og:description" content="Govardhan Satya Gadi, AI Engineer. MCP-based agents, knowledge-graph retrieval, biosignal deep learning, and production Go/Python services." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://govardhansatya.github.io/" />
-  <meta property="og:image" content="https://govardhansatya.github.io/photo.jpeg" />
+  <meta property="og:image" content="https://govardhansatya.github.io/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Govardhan Satya Gadi, AI Engineer" />
+  <meta property="og:site_name" content="Govardhan Satya Gadi" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Govardhan Satya Gadi — AI Engineer" />
+  <meta name="twitter:description" content="MCP-based agents, knowledge-graph retrieval, biosignal deep learning, and production Go/Python services." />
+  <meta name="twitter:image" content="https://govardhansatya.github.io/og-image.jpg" />
+  <meta name="twitter:image:alt" content="Govardhan Satya Gadi, AI Engineer" />
+  <link rel="canonical" href="https://govardhansatya.github.io/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <title>Govardhan Satya Gadi — AI Engineer</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Govardhan Satya Gadi",
+    "jobTitle": "AI Engineer",
+    "url": "https://govardhansatya.github.io/",
+    "image": "https://govardhansatya.github.io/photo.jpeg",
+    "worksFor": { "@type": "Organization", "name": "Heapvue" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Amrita Vishwa Vidyapeetham" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Tuni", "addressRegion": "Andhra Pradesh", "addressCountry": "IN" },
+    "sameAs": [
+      "https://github.com/govardhansatya",
+      "https://www.linkedin.com/in/govardhansatya"
+    ]
+  }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;1,9..144,300;1,9..144,500&family=Anton&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script type="importmap">
-    { "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" } }
+    {
+      "imports": { "three": "https://unpkg.com/three@0.160.0/build/three.module.js" },
+      "integrity": { "https://unpkg.com/three@0.160.0/build/three.module.js": "sha384-61S/Nu32S3E5+n+KpCOTb2eRYps6fVKm+9Gz1QBvSePFthb46f063Aa/qe/lykFZ" }
+    }
   </script>
 </head>
 <body>
@@ -50,7 +80,7 @@
         <a href="#education">education</a>
         <a href="#contact">contact</a>
       </nav>
-      <div style="display: flex; align-items: center; gap: 1rem;">
+      <div class="nav-tools">
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark mode">
           <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -204,7 +234,7 @@
       <span class="section-tag reveal">02 — skills</span>
       <h2 class="section-heading reveal">Tools of the trade</h2>
       <div class="skills-grid">
-        <div class="skill-group reveal tilt-target">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
             Programming
@@ -218,7 +248,7 @@
             <span class="stag">SQL</span>
           </div>
         </div>
-        <div class="skill-group reveal tilt-target">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             AI &amp; ML
@@ -233,7 +263,7 @@
             <span class="stag stag-pink">XGBoost</span>
           </div>
         </div>
-        <div class="skill-group reveal tilt-target">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 2v10l7 4"/></svg>
             Generative AI
@@ -247,7 +277,7 @@
             <span class="stag stag-pink">LLM Fine-Tuning</span>
           </div>
         </div>
-        <div class="skill-group reveal tilt-target">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l2 8 4-16 2 8h4"/></svg>
             Signal Processing &amp; Time Series
@@ -260,7 +290,7 @@
             <span class="stag">LSTM Autoencoders</span>
           </div>
         </div>
-        <div class="skill-group reveal tilt-target">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             Frameworks
@@ -275,7 +305,7 @@
             <span class="stag stag-rose">Playwright</span>
           </div>
         </div>
-        <div class="skill-group reveal tilt-target">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
             Data &amp; Retrieval
@@ -289,7 +319,7 @@
             <span class="stag stag-rose">Hybrid Retrieval</span>
           </div>
         </div>
-        <div class="skill-group reveal tilt-target">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
             Cloud &amp; Deployment
@@ -302,7 +332,7 @@
             <span class="stag">REST APIs</span>
           </div>
         </div>
-        <div class="skill-group reveal tilt-target">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
             Frontend &amp; Backend
@@ -314,7 +344,7 @@
             <span class="stag">Tailwind CSS</span>
           </div>
         </div>
-        <div class="skill-group reveal tilt-target">
+        <div class="skill-group reveal">
           <h3 class="skill-group-title">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             Languages
@@ -338,7 +368,7 @@
       <div class="timeline">
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-card tilt-target">
+          <div class="timeline-card">
             <div class="timeline-meta">
               <span class="timeline-period">Feb 2026 — Present</span>
               <span class="timeline-badge">current</span>
@@ -362,7 +392,7 @@
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-card tilt-target">
+          <div class="timeline-card">
             <div class="timeline-meta">
               <span class="timeline-period">May 2026 — Aug 2026</span>
             </div>
@@ -384,7 +414,7 @@
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-card tilt-target">
+          <div class="timeline-card">
             <div class="timeline-meta">
               <span class="timeline-period">Aug 2025 — Feb 2026</span>
             </div>
@@ -406,7 +436,7 @@
 
         <div class="timeline-item reveal">
           <div class="timeline-dot"></div>
-          <div class="timeline-card tilt-target">
+          <div class="timeline-card">
             <div class="timeline-meta">
               <span class="timeline-period">Jun 2025 — Jul 2026</span>
             </div>
@@ -436,7 +466,7 @@
       <h2 class="section-heading reveal">Things I've built</h2>
       <div class="projects-grid">
 
-        <article class="project-card project-card-wide reveal tilt-target">
+        <article class="project-card project-card-wide reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 7.5 11 16M15.5 7.5 13 16M9 6h6"/></svg>
@@ -455,7 +485,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2 8 4-16 2 8h4"/></svg>
@@ -474,7 +504,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
@@ -493,7 +523,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
@@ -512,7 +542,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
@@ -531,7 +561,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
@@ -549,7 +579,7 @@
           </div>
         </article>
 
-        <article class="project-card project-card-wide reveal tilt-target">
+        <article class="project-card project-card-wide reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
@@ -573,7 +603,7 @@
         <summary><span>More experiments</span><span class="more-count">7</span></summary>
       <div class="projects-grid">
 
-        <article class="project-card project-card-wide reveal tilt-target">
+        <article class="project-card project-card-wide reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
@@ -591,7 +621,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
@@ -609,7 +639,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><circle cx="12" cy="18" r="3"/><path d="M8.5 7.5 11 16M15.5 7.5 13 16M9 6h6"/></svg>
@@ -628,7 +658,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
@@ -646,7 +676,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3H3v7h18V3z"/><path d="M12 10v11"/><path d="M8 21h8"/></svg>
@@ -664,7 +694,7 @@
           </div>
         </article>
 
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -683,7 +713,7 @@
           </div>
         </article>
 
-        <article class="project-card project-card-wide reveal tilt-target">
+        <article class="project-card project-card-wide reveal">
           <div class="project-card-top">
             <div class="project-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
@@ -714,7 +744,7 @@
       <span class="section-tag reveal">05 — research</span>
       <h2 class="section-heading reveal">Research &amp; recognition</h2>
       <div class="projects-grid">
-        <article class="project-card project-card-wide reveal tilt-target">
+        <article class="project-card project-card-wide reveal">
           <div class="project-card-top">
             <span class="project-status">accepted · ACM AI Summit 2026</span>
           </div>
@@ -731,7 +761,7 @@
             <span class="stag stag-pink stag-sm">Edge AI</span>
           </div>
         </article>
-        <article class="project-card reveal tilt-target">
+        <article class="project-card reveal">
           <div class="project-card-top">
             <span class="project-status">finalist</span>
           </div>

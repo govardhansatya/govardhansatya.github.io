@@ -88,7 +88,7 @@ if (canvas && !prefersReducedMotion.matches && window.innerWidth > 700) {
       posArr[ix + 2] = nz * wobble;
     }
     pos.needsUpdate = true;
-    geometry.computeVertexNormals();
+    // flatShading derives normals in the shader, so no per-frame normal rebuild is needed
 
     mesh.rotation.y += 0.0025;
     mesh.rotation.x += (targetRotX - mesh.rotation.x) * 0.03;
@@ -98,12 +98,22 @@ if (canvas && !prefersReducedMotion.matches && window.innerWidth > 700) {
   }
   animate();
 
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      running = false;
-    } else if (!running) {
+  // Only animate while the hero is on screen and the tab is visible.
+  let heroVisible = true;
+  const resume = () => {
+    const shouldRun = heroVisible && !document.hidden;
+    if (shouldRun && !running) {
       running = true;
       animate();
+    } else if (!shouldRun) {
+      running = false;
     }
-  });
+  };
+
+  new IntersectionObserver((entries) => {
+    heroVisible = entries[0].isIntersecting;
+    resume();
+  }).observe(wrap);
+
+  document.addEventListener('visibilitychange', resume);
 }
