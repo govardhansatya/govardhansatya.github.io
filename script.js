@@ -72,58 +72,6 @@
   });
 
 
-  /* ---- Custom Cursor ------------------------------------- */
-  const dot = document.getElementById('cursorDot');
-
-  // Only activate on non-touch devices
-  const isTouchDevice = () => window.matchMedia('(hover: none)').matches;
-
-  if (!isTouchDevice()) {
-    let mouseX = 0, mouseY = 0;
-    let dotX = 0, dotY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-    });
-
-    // Smooth trailing effect
-    const animateCursor = () => {
-      dotX += (mouseX - dotX) * 0.18;
-      dotY += (mouseY - dotY) * 0.18;
-      dot.style.left = dotX + 'px';
-      dot.style.top  = dotY + 'px';
-      requestAnimationFrame(animateCursor);
-    };
-    animateCursor();
-
-    // Grow cursor on interactive elements
-    const interactiveEls = document.querySelectorAll(
-      'a, button, .project-card, .skill-group, .timeline-card, .contact-card'
-    );
-
-    interactiveEls.forEach((el) => {
-      el.addEventListener('mouseenter', () => {
-        dot.style.width  = '24px';
-        dot.style.height = '24px';
-        dot.style.opacity = '0.5';
-      });
-      el.addEventListener('mouseleave', () => {
-        dot.style.width  = '';
-        dot.style.height = '';
-        dot.style.opacity = '';
-      });
-    });
-    // Add CSS class to strictly hide real cursor if JS is working & non-touch
-    document.body.classList.add('cursor-none');
-
-  } else {
-    // On touch, hide cursor dot and restore default cursor
-    dot.style.display = 'none';
-    document.body.classList.remove('cursor-none');
-  }
-
-
   /* ---- Smooth active nav link highlighting -------------- */
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
@@ -202,18 +150,14 @@
 
   /* ---- Dark Mode Toggle ----------------------------------- */
   const themeToggleMsg = document.getElementById('themeToggle');
-  const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
   
-  // Set initial theme based on localStorage, fallback to system preference
-  const currentTheme = localStorage.getItem('theme') || (prefersDarkScheme.matches ? 'dark' : 'light');
-  document.documentElement.setAttribute('data-theme', currentTheme);
-
+  // Initial theme is applied by the inline script in <head>; just read it here.
   if (themeToggleMsg) {
     themeToggleMsg.addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const newTheme = isDark ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', newTheme);
-      localStorage.setItem('theme', newTheme);
+      try { localStorage.setItem('theme', newTheme); } catch (e) { /* storage unavailable */ }
     });
   }
 

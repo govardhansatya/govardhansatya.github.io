@@ -75,10 +75,6 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-body.cursor-none {
-  cursor: none;
-}
-
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 img { max-width: 100%; }
@@ -96,26 +92,10 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* Everything above the canvas */
-header, section, footer, .cursor-dot {
+header, section, footer {
   position: relative;
   z-index: 1;
 }
-
-/* ---- Custom Cursor --------------------------------------- */
-.cursor-dot {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: var(--pink-mid);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s, width 0.2s, height 0.2s, background 0.2s;
-  mix-blend-mode: multiply;
-}
-
-body:not(:hover) .cursor-dot { opacity: 0; }
 
 /* ---- Scrollbar ------------------------------------------ */
 ::-webkit-scrollbar { width: 6px; }
@@ -1535,4 +1515,14 @@ p { color: var(--text-body); }
 @media (max-width: 480px) {
   .hero-actions { gap: 0.6rem; }
   .hero-actions .btn { padding: 0.7rem 1.05rem; font-size: 0.85rem; }
+}
+
+
+/* ================================================================
+   TABLET (2-column) GRID: keep rows filled
+   ================================================================ */
+@media (max-width: 960px) and (min-width: 641px) {
+  .project-card-wide { grid-column: span 1; }
+  .projects-grid > .project-card-wide:first-child { grid-column: span 2; }
+  .projects-grid > :last-child:nth-child(even) { grid-column: span 2; }
 }
