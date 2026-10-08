@@ -1426,3 +1426,60 @@ p { color: var(--text-body); }
   .hero-photo-frame { animation: none; }
   .hero-photo-ring  { animation: none; }
 }
+
+
+/* ================================================================
+   PROJECT STATUS / SUBHEADS
+   ================================================================ */
+.project-top-right {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.project-status {
+  display: inline-block;
+  padding: 0.15rem 0.6rem;
+  background: var(--pink-pale);
+  color: var(--pink-dark);
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.projects-subhead {
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin: 3rem 0 1.25rem;
+}
+
+.research-note {
+  margin: 2.5rem 0 0.75rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.project-desc code {
+  font-size: 0.85em;
+  padding: 0.05rem 0.35rem;
+  background: var(--pink-pale);
+  border-radius: 4px;
+}
+
+
+/* ================================================================
+   PROJECT GRID LAYOUT: 3 / 2 / 1 columns, wide cards fill rows
+   ================================================================ */
+.projects-grid { grid-template-columns: repeat(3, 1fr); }
+.project-card-wide { grid-column: span 2; }
+
+@media (max-width: 960px) {
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  .projects-grid { grid-template-columns: 1fr; }
+  .project-card-wide { grid-column: span 1; }
+}
